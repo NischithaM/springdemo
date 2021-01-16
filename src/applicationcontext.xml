@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/aop
+      http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+      http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+	  <context:annotation-config/>
+	  <context:component-scan base-package="com.cruds.*"/>
+
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+ 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+ 		<property name="url" value="jdbc:mysql://localhost:3306/test"/>
+  		<property name="username" value="root"/>
+  		<property name="password" value="dummy"/>
+    </bean>
+	
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"></property>
+	
+	</bean>
+
+	<!-- <bean id="departmentDAOImpl" class="com.cruds.db.DepartmentDAOImpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate"></property>
+	</bean>
+
+	<bean id="userDAOImpl" class="com.cruds.db.UserDAOImpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate"></property>
+	</bean>
+
+	<bean id="helloBean" class="com.cruds.demo.HelloBean" scope="prototype">
+		<property name="msg" value="Welcome to Spring Beans" />
+	</bean>
+
+	<bean id="sRSTransport" class="com.cruds.demo.SRSTransport" />
+	<bean id="vLRTransport" class="com.cruds.demo.VLRTransport" />
+	<bean id="vehicleServiceProvider" class="com.cruds.demo.VehicleServiceProvider" autowire="byType">
+		<property name="vp">
+			<ref bean="vLRTransport" />
+		</property>
+	</bean>
+	
+	
+	<bean id="user" class="com.cruds.demo.User">
+	<property name="name" value="nischitha m"/>
+	<property name="age" value="22"/>
+	<property name="country" value="India"/>
+	</bean>
+	
+	
+	constructor injection
+	<bean id="user" class="com.cruds.demo.User">
+	<constructor-arg value="nischitha m"/>
+	<constructor-arg value="India"/>
+	<constructor-arg value="22"/>
+	</bean>
+	
+	<bean id="author" class="com.cruds.demo.Author">
+	<property name="name" value="anu"/>
+	<property name="mailid" value="anu@gmail.com"/>
+	</bean>
+	
+	<bean id="book" class="com.cruds.demo.Book" autowire="byName"> authowire example by name
+	<property name="isbn" value="11"/>
+	<property name="title" value="500 days of summer"/>
+	<property name="price" value="1000"/>
+	<property name="author">
+		<ref bean="author"/>
+	</property>
+	
+	</bean>
+	
+	
+	<bean id="book" class="com.cruds.demo.Book" autowire="byType"> authowire example by type
+	<property name="isbn" value="11"/>
+	<property name="title" value="500 days of summer"/>
+	<property name="price" value="1000"/>
+	
+	</bean> -->
+	
+</beans>
